@@ -15,27 +15,18 @@ function loadNewPerson() {
     },
     success: function(data) {
       let result = data["results"];
-      console.log(data);
-      console.log(result);
-      console.log(result[0]["gender"]);
-      console.log(result[0]["email"]);
       email = result[0]["email"];
       let nameObj = result[0]["name"];
       let firstName = nameObj["first"];
       let lastName = nameObj["last"];
-      console.log(nameObj["first"]);
-      console.log(nameObj["last"]);
       name = firstName + " " + lastName;
       name = name.toLowerCase().replace(/\b[a-z]/g, function(letter) {
         return letter.toUpperCase();
       });
-      console.log(name);
       let pictureUrlObj = result[0]["picture"];
-      thumbnail = pictureUrlObj["thumbnail"];
-      console.log(pictureUrlObj["large"]);
+      thumbnail = pictureUrlObj["thumbnail"];      
       let dobObj = result[0]["dob"];
       age = dobObj["age"];
-      console.log(age);
       let location = result[0]["location"];
       city = location["city"];
       $(".imagebox img").attr("src", pictureUrlObj["large"]);
